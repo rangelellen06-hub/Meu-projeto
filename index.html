@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+<title>Meu Benzinho 💕</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  background:
+    linear-gradient(rgba(123, 97, 255, 0.5), rgba(255, 182, 193, 0.5)),
+    url("sabrina-eu.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Tela de login */
+#login {
+  animation: fadeIn 1.5s ease;
+}
+
+input {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+  outline: none;
+}
+
+/* Card principal */
+.container {
+  display: none;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  padding: 35px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  animation: fadeIn 1.5s ease;
+}
+
+h1 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 12px 22px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 15px;
+  background: white;
+  color: #7b61ff;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #f2eaff;
+}
+
+#carta {
+  display: none;
+  margin-top: 15px;
+  line-height: 1.6;
+  font-size: 15px;
+  opacity: 0.95;
+}
+
+#mensagemAbraco {
+  margin-top: 15px;
+  font-weight: 500;
+  min-height: 60px;
+}
+
+video {
+  margin-top: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.heart {
+  position: fixed;
+  animation: subir 4s linear infinite;
+}
+
+@keyframes subir {
+  from { transform: translateY(100vh); opacity: 1; }
+  to { transform: translateY(-10vh); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#contadorBox {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.15);
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+}
+
+#contadorTempo {
+  margin: 0;
+  font-weight: 500;
+}
+</style>
+</head>
+
+<body>
+
+<div id="login">
+  <h2>Digite nossa palavra secreta 💌</h2>
+  <input type="text" id="senha" placeholder="...">
+  <br>
+  <button onclick="verificar()">Entrar 🤍</button>
+</div>
+
+<div class="container" id="conteudo">
+
+  <h1>Para você, meu benzinho 💖</h1>
+  <div id="contadorBox">
+  <p id="contadorTempo"></p>
+</div>
+
+  <button id="btnCarta" onclick="mostrarCarta()">Ler cartinha 💌</button>
+
+  <div id="carta">
+    Meu amor...<br><br>
+    Passar esses três meses ao seu lado tem sido tão incrível
+    que eu nem sei como explicar... Coloquei essa música que eu chamo de nossa.<br><br>
+    Eu nem sei como seria a minha vida hoje sem você.
+    Não posso estar ao seu lado hoje,
+    mas espero que se sinta amada e abraçada!<br><br>
+    Eu te amo, meu benzinho ❤️<br><br>
+    Com amor,<br>
+    Sua programadora 🤍
+  </div>
+
+  <button id="btnAbraco" onclick="abraco()">Preciso de um abraço 🤍</button>
+
+  <div id="mensagemAbraco"></div>
+
+  <!-- CORRIGIDO AQUI -->
+  <video width="100%" controls>
+    <source src="gravacao.mp4" type="video/mp4">
+  </video>
+
+  <p style="margin-top:15px; font-size:14px;">
+    Feito com amor pela sua programadora 💻💕
+  </p>
+
+</div>
+
+<script>
+
+function verificar() {
+  let senha = document.getElementById("senha").value;
+  if(senha.toLowerCase() === "meu benzinho") {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("conteudo").style.display = "block";
+  } else {
+    alert("Senha errada 😜 tenta de novo");
+  }
+}
+
+function mostrarCarta() {
+  let carta = document.getElementById("carta");
+  let botao = document.getElementById("btnCarta");
+
+  if (carta.style.display === "block") {
+    carta.style.display = "none";
+    botao.innerText = "Ler cartinha 💌";
+  } else {
+    carta.style.display = "block";
+    botao.innerText = "Fechar cartinha 💌";
+  }
+}
+
+function abraco() {
+  let mensagem = document.getElementById("mensagemAbraco");
+  let botao = document.getElementById("btnAbraco");
+
+  if (mensagem.innerHTML !== "") {
+    mensagem.innerHTML = "";
+    botao.innerText = "Preciso de um abraço 🤍";
+  } else {
+    mensagem.innerHTML =
+      "Respira comigo... 🤍<br><br>" +
+      "Inspira devagar... 🌷<br>" +
+      "Segura um pouquinho... 🌙<br>" +
+      "Solta o ar bem tranquilo... 💞<br><br>" +
+      "Eu estou te abraçando daqui.";
+
+    botao.innerText = "Fechar abraço 🤍";
+
+    for(let i = 0; i < 20; i++){
+      let heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "🤍";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }
+  }
+}
+
+// CONTADOR DE DIAS JUNTAS
+function atualizarContador() {
+  const dataInicio = new Date("2025-11-20T00:00:00");
+  const agora = new Date();
+
+  if (agora < dataInicio) {
+    document.getElementById("contadorTempo").innerHTML =
+      "Contando os segundos para o nosso começo 💖";
+    return;
+  }
+
+  let anos = agora.getFullYear() - dataInicio.getFullYear();
+  let meses = agora.getMonth() - dataInicio.getMonth();
+  let dias = agora.getDate() - dataInicio.getDate();
+  let horas = agora.getHours() - dataInicio.getHours();
+  let minutos = agora.getMinutes() - dataInicio.getMinutes();
+  let segundos = agora.getSeconds() - dataInicio.getSeconds();
+
+  if (segundos < 0) {
+    segundos += 60;
+    minutos--;
+  }
+
+  if (minutos < 0) {
+    minutos += 60;
+    horas--;
+  }
+
+  if (horas < 0) {
+    horas += 24;
+    dias--;
+  }
+
+  if (dias < 0) {
+    const ultimoMes = new Date(agora.getFullYear(), agora.getMonth(), 0);
+    dias += ultimoMes.getDate();
+    meses--;
+  }
+
+  if (meses < 0) {
+    meses += 12;
+    anos--;
+  }
+
+  document.getElementById("contadorTempo").innerHTML =
+    "💕 " +
+    (anos > 0 ? anos + " ano(s), " : "") +
+    meses + " mêses, " +
+    dias + " dia(s), " +
+    horas + "h " +
+    minutos + "min " +
+    segundos + "s de você sendo meu lar 🤍";
+}
+
+setInterval(atualizarContador, 1000);
+atualizarContador();
+</script>
+
+</body>
+</html>
